@@ -134,9 +134,6 @@ function add_message($message)
 
 function add_comment($comment)
 {
-		// var_dump($_POST);
-		// var_dump($comment);
-		// die();
 	$_SESSION['comment_error'] = array();
 	// first let's validate
 	if(empty($_POST['post_comment']))
@@ -162,7 +159,7 @@ function add_comment($comment)
 
 function remove_message($post)
 {
-	$query = "DELETE FROM messages WHERE mid = {$post['delete_message']}";
+	$query = "DELETE FROM messages WHERE id = {$post['delete_message']}";
 	run_mysql_query($query);
 	header('location: main.php');
 	die();

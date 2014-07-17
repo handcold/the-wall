@@ -1,8 +1,8 @@
 <?php
 
 session_start();
-echo "Welcome to the Wall, {$_SESSION['first_name']}!       ";
-echo "<a href='process.php'>Click to log off </a>";
+echo "Welcome to the Wall, {$_SESSION['first_name']}!   ";
+echo "    <a href='process.php'>Click to log off </a>";
 require('new-connection.php');
 
 $query = "SELECT users.id, users.first_name, users.last_name, messages.id as 'mid', messages.created_at, messages.message FROM users LEFT JOIN messages ON users.id = messages.user_id GROUP BY created_at DESC;";
@@ -43,9 +43,6 @@ $posted_comments = fetch_all($query2);
 			<?php
 				foreach($posted_messages as $posted_message)
 				{
-					// var_dump($posted_message);
-					// var_dump($_SESSION);
-					// die();
 					if($posted_message['message'] !== null)
 					{
 						echo "<h4>{$posted_message['first_name']} {$posted_message['last_name']} - {$posted_message['created_at']}</h4><br>{$posted_message['message']}
@@ -75,13 +72,7 @@ $posted_comments = fetch_all($query2);
 						}  
 					echo "<hr>";
 					}
-					// foreach($posted_comments as $posted_comment)
-					// {
-					// 	if($posted_comment['message_id'] == $posted_message['id'])
-					// 	{
-					// 		echo "<li>{$posted_comment['comment']}</li>";
-					// 	}
-					// }
+
 				}
 			?>
 		</ul>
